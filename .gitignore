@@ -1,0 +1,27 @@
+# 社内用ファイル（非公開・サイトには含めない）
+資料/
+
+# OS が自動生成する一時ファイル
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# エディタ / IDE 設定
+.vscode/
+.idea/
+*.swp
+
+# 秘密情報・環境変数
+.env
+.env.*
+*.pem
+*.key
+
+# 今後Node系ツールを導入した場合に備えて
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ログ
+*.log
