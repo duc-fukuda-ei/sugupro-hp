@@ -452,6 +452,12 @@ section { padding: 64px 0; }
   margin-top: 36px;
   text-align: center;
 }
+.risk-cta-mascot {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto 12px;
+}
 .risk-cta-text { font-weight: 700; font-size: 16px; margin-bottom: 18px; }
 
 @media (min-width: 700px) {
