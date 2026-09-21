@@ -1,0 +1,232 @@
+/* ============================================================
+   2027年蛍光灯問題キャンペーンページ 専用スタイル
+   すぐプロ本体（青×黄）とは意図的に別のテーマカラーにしています。
+   ダーク基調 × オレンジ（警告・カウントダウンの印象）
+   ============================================================ */
+
+:root {
+  --cp-bg: #101216;
+  --cp-surface: #191c22;
+  --cp-surface-alt: #1f232b;
+  --cp-border: #2b303a;
+  --cp-text: #f3f1ea;
+  --cp-text-muted: #a3a8b3;
+  --cp-accent: #ff5a1f;
+  --cp-accent-dark: #d9450f;
+  --cp-warn: #ffcc33;
+  --cp-danger: #ff4d3d;
+  --radius-m: 14px;
+  --radius-l: 22px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cp-bg);
+  color: var(--cp-text);
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  line-height: 1.85;
+  padding-bottom: 64px;
+}
+h1, h2, h3, .display {
+  font-family: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+  font-weight: 900;
+  text-wrap: balance;
+}
+.container { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+section { padding: 60px 0; }
+img { max-width: 100%; }
+
+/* ---- ミニヘッダー ---- */
+.cp-header {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--cp-border);
+}
+.cp-header .container { display: flex; align-items: center; justify-content: space-between; }
+.cp-brand {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--cp-text); text-decoration: none;
+  font-weight: 700; font-size: 14px;
+}
+.cp-brand svg { width: 22px; height: 22px; color: var(--cp-accent); }
+.cp-header .btn { padding: 9px 18px; font-size: 13px; }
+
+/* ---- ヒーロー ---- */
+.cp-hero { padding: 64px 0 48px; text-align: center; }
+.cp-deadline {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: 999px;
+  padding: 8px 20px;
+  margin-bottom: 26px;
+}
+.cp-deadline .num { font-size: 22px; font-weight: 900; color: var(--cp-accent); font-family: "Zen Kaku Gothic New", sans-serif; }
+.cp-deadline .lbl { font-size: 12.5px; color: var(--cp-text-muted); letter-spacing: 0.04em; }
+
+.cp-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cp-warn);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.cp-hero h1 {
+  font-size: clamp(28px, 6.5vw, 46px);
+  line-height: 1.4;
+  margin: 0 0 20px;
+}
+.cp-hero h1 .accent { color: var(--cp-accent); }
+.cp-hero .lead {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--cp-text-muted);
+  font-size: 16px;
+}
+.cp-hero-cta { margin-top: 32px; }
+
+/* ---- ボタン ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 16px 30px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  transition: transform .15s ease, filter .15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-cp-primary { background: var(--cp-accent); color: #14100a; box-shadow: 0 8px 24px rgba(255,90,31,0.35); }
+.btn-cp-primary:hover { filter: brightness(1.08); }
+.btn-cp-outline { background: transparent; border: 2px solid var(--cp-border); color: var(--cp-text); }
+.btn-cp-outline:hover { border-color: var(--cp-accent); }
+.cp-cta-group { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* ---- セクション見出し ---- */
+.cp-section-head { text-align: center; max-width: 620px; margin: 0 auto 34px; }
+.cp-tag {
+  display: inline-block;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--cp-accent);
+  background: rgba(255,90,31,0.12);
+  padding: 5px 14px; border-radius: 999px;
+  margin-bottom: 14px;
+}
+.cp-section-head h2 { font-size: clamp(22px, 4vw, 28px); margin: 0; }
+.cp-section-head p { margin-top: 12px; color: var(--cp-text-muted); font-size: 14.5px; }
+
+/* ---- チェックリスト ---- */
+.cp-check-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.cp-check-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--radius-m);
+  padding: 18px 20px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.cp-check-item .mk {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: var(--cp-accent);
+  color: #14100a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 900;
+}
+@media (min-width: 640px) { .cp-check-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---- 警告パネル(2027年問題) ---- */
+.cp-panel {
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-left: 5px solid var(--cp-danger);
+  border-radius: var(--radius-m);
+  padding: 28px 26px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.cp-panel h3 { font-size: 19px; margin: 0 0 12px; color: var(--cp-warn); }
+.cp-panel p { font-size: 14.5px; color: var(--cp-text-muted); margin: 10px 0 0; }
+.cp-panel p:first-of-type { margin-top: 0; }
+.cp-panel strong { color: var(--cp-text); }
+
+/* ---- リスクカード ---- */
+.cp-risk-grid {
+  display: grid; gap: 16px;
+  grid-template-columns: 1fr;
+}
+.cp-risk-card {
+  background: var(--cp-surface-alt);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--radius-m);
+  padding: 22px 20px;
+}
+.cp-risk-now { font-weight: 800; font-size: 15px; }
+.cp-risk-sub { margin-top: 4px; font-size: 12.5px; color: var(--cp-text-muted); }
+.cp-risk-arrow { display: block; margin: 12px 0; color: var(--cp-accent); font-weight: 900; }
+.cp-risk-then {
+  font-size: 13.5px; color: var(--cp-text-muted);
+  background: var(--cp-bg);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+@media (min-width: 640px) { .cp-risk-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---- 中間CTAバンド ---- */
+.cp-cta-band {
+  margin-top: 44px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255,90,31,0.14), rgba(255,204,51,0.08));
+  border: 1px solid var(--cp-border);
+  border-radius: var(--radius-l);
+  padding: 30px 24px;
+  max-width: 760px;
+  margin-left: auto; margin-right: auto;
+}
+.cp-cta-band p { font-weight: 800; font-size: 16px; margin: 0 0 18px; }
+
+/* ---- 最終クロージング ---- */
+.cp-closing {
+  text-align: center;
+  background: var(--cp-surface);
+  border-top: 1px solid var(--cp-border);
+  padding: 70px 0;
+}
+.cp-closing h2 { font-size: clamp(24px, 5vw, 32px); margin: 0 0 16px; }
+.cp-closing p { color: var(--cp-text-muted); max-width: 560px; margin: 0 auto 30px; font-size: 15px; }
+
+/* ---- フッター ---- */
+.cp-footer {
+  text-align: center;
+  padding: 28px 0 90px;
+  font-size: 12.5px;
+  color: var(--cp-text-muted);
+}
+.cp-footer a { color: var(--cp-accent); }
+
+/* ---- スマホ固定CTA ---- */
+.cp-sticky {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 200;
+  display: flex;
+  background: var(--cp-surface);
+  border-top: 1px solid var(--cp-border);
+  padding: 10px 16px;
+  gap: 10px;
+  box-shadow: 0 -6px 20px rgba(0,0,0,0.4);
+}
+.cp-sticky .btn { flex: 1; padding: 12px 10px; font-size: 14px; }
+@media (min-width: 1024px) { .cp-sticky { display: none; } body { padding-bottom: 0; } }
+
+.text-center { text-align: center; }
