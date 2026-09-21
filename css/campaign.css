@@ -295,3 +295,35 @@ img { max-width: 100%; }
 .cp-action-item .no::before { content: counter(cpaction); }
 .cp-action-item .tx { font-size: 14.5px; padding-top: 4px; }
 .cp-action-item .tx strong { display: block; font-size: 15px; margin-bottom: 4px; }
+
+/* ---- メーカー動向テーブル ---- */
+.cp-table-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  overflow-x: auto;
+  border: 1px solid var(--cp-border);
+  border-radius: var(--radius-m);
+}
+table.cp-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+  background: var(--cp-surface);
+  font-size: 13.5px;
+}
+.cp-table th, .cp-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--cp-border);
+}
+.cp-table thead th {
+  background: var(--cp-surface-alt);
+  color: var(--cp-warn);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.cp-table tbody tr:last-child td { border-bottom: none; }
+.cp-table td.mk { font-weight: 800; }
+.cp-table td.status-active { color: var(--cp-text-muted); }
+.cp-table td.status-ended { color: var(--cp-text-muted); }
+.cp-table-note { font-size: 12px; color: var(--cp-text-muted); margin-top: 12px; text-align: center; }
