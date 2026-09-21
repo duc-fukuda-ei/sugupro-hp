@@ -168,6 +168,28 @@
     applyFilter("all");
   }
 
+  /* ---------- 記事ページ：控えめなスクロール表示演出 ---------- */
+  function initScrollReveal() {
+    var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var els = document.querySelectorAll(".reveal");
+    if (!els.length || prefersReduced || !("IntersectionObserver" in window)) return;
+
+    els.forEach(function (el) { el.classList.add("reveal-ready"); });
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach(function (el) { io.observe(el); });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initTabGroup(".pain-tab", ".pain-panel");
     initTabGroup(".risk-tab", ".risk-panel");
@@ -176,5 +198,6 @@
     initZipcodeLookup();
     initHeaderShadow();
     initArticleFilter();
+    initScrollReveal();
   });
 })();

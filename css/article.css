@@ -196,3 +196,206 @@
   margin: 56px auto 0;
 }
 .related-articles h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+
+/* ============================================================
+   記事内の強調パーツ（料金ボックス・注意書き・CTA・スクロール演出）
+   ============================================================ */
+
+/* ---- 結論ボックス ---- */
+.article-lead-box {
+  max-width: 720px;
+  margin: 28px auto 0;
+  background: var(--color-primary-light);
+  border-radius: var(--radius-l);
+  padding: 24px 24px 22px;
+  text-align: center;
+}
+.article-lead-box .label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  background: #fff;
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.article-lead-box p {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  line-height: 1.8;
+}
+
+/* ---- 料金ハイライトボックス ---- */
+.price-highlight-box {
+  max-width: 720px;
+  margin: 32px auto 0;
+  background: #fff;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-l);
+  padding: 28px 22px;
+  box-shadow: var(--shadow-card);
+}
+.price-highlight-title {
+  text-align: center;
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--color-primary-dark);
+  margin-bottom: 20px;
+}
+.price-highlight-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 560px) {
+  .price-highlight-grid { grid-template-columns: 1fr 1fr; }
+}
+.price-highlight-item {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-m);
+  padding: 18px 16px;
+  text-align: center;
+}
+.price-highlight-item .item-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+.price-highlight-item .item-sub {
+  font-size: 11.5px;
+  color: var(--color-text-light);
+  margin-top: 2px;
+}
+.price-highlight-item .item-price {
+  margin-top: 10px;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.1;
+}
+.price-highlight-item .item-price .num {
+  font-size: 34px;
+  font-family: inherit;
+}
+.price-highlight-item .item-price .unit {
+  font-size: 16px;
+  margin-left: 2px;
+}
+.price-highlight-note {
+  margin-top: 20px;
+  display: grid;
+  gap: 6px;
+}
+.price-highlight-note li {
+  font-size: 12.5px;
+  color: var(--color-text-light);
+  padding-left: 1.1em;
+  position: relative;
+}
+.price-highlight-note li::before {
+  content: "※";
+  position: absolute; left: 0;
+}
+
+/* ---- 料金シミュレーション表 ---- */
+.price-sim-table-wrap { max-width: 720px; margin: 24px auto 0; overflow-x: auto; }
+table.price-sim-table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+.price-sim-table th, .price-sim-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+.price-sim-table th { background: var(--color-primary-light); color: var(--color-primary-dark); font-size: 13px; }
+.price-sim-table td.amount { font-weight: 800; color: var(--color-primary-dark); white-space: nowrap; }
+.price-sim-table tr.is-note td { color: var(--color-text-light); font-size: 13px; font-weight: 400; }
+
+/* ---- 注意コールアウト ---- */
+.article-callout {
+  max-width: 720px;
+  margin: 28px auto 0;
+  display: flex;
+  gap: 12px;
+  background: #fff8e8;
+  border: 1px solid #f0dca8;
+  border-radius: var(--radius-m);
+  padding: 16px 18px;
+}
+.article-callout .ico {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  color: var(--color-accent-dark);
+}
+.article-callout .body { font-size: 14px; color: var(--color-text); line-height: 1.85; }
+.article-callout .body strong { color: var(--color-primary-dark); }
+
+/* ---- 差別化ポイント（すぐプロならでは） ---- */
+.article-diff-list {
+  max-width: 720px;
+  margin: 24px auto 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 560px) {
+  .article-diff-list { grid-template-columns: 1fr 1fr; }
+}
+.article-diff-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-s);
+  padding: 12px 14px;
+  font-size: 13.5px;
+}
+.article-diff-item svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--color-primary); margin-top: 1px; }
+
+/* ---- 記事中CTA（複数箇所で使用） ---- */
+.article-inline-cta {
+  max-width: 720px;
+  margin: 36px auto 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: var(--radius-l);
+  padding: 26px 24px;
+  text-align: center;
+  color: #fff;
+}
+.article-inline-cta p.headline { font-weight: 800; font-size: 16.5px; line-height: 1.7; margin-bottom: 6px; }
+.article-inline-cta p.sub { font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 18px; }
+.article-inline-cta .cta-group { gap: 10px; }
+.article-inline-cta .btn-outline { background: transparent; border-color: rgba(255,255,255,0.7); color: #fff; }
+.article-inline-cta .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+/* ---- FAQ（記事内） ---- */
+.article-faq-list { max-width: 720px; margin: 24px auto 0; display: grid; gap: 10px; }
+
+/* ---- スクロール演出：JSでreveal-readyが付与されたときだけアニメーション ---- */
+.reveal-ready {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal-ready.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-ready.price-highlight-box {
+  transform: translateY(14px) scale(0.97);
+}
+.reveal-ready.price-highlight-box.is-visible {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
