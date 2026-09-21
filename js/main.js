@@ -74,6 +74,55 @@
     });
   }
 
+  /* ---------- 郵便番号から住所検索（zipcloud API、無料・登録不要） ---------- */
+  function initZipcodeLookup() {
+    var zipInput = document.getElementById("zipcode");
+    var searchBtn = document.getElementById("zipcode-search");
+    var prefInput = document.getElementById("prefecture");
+    var cityInput = document.getElementById("city");
+    var statusEl = document.getElementById("zipcode-status");
+    if (!zipInput || !searchBtn || !prefInput || !cityInput) return;
+
+    function setStatus(text, type) {
+      if (!statusEl) return;
+      statusEl.textContent = text;
+      statusEl.classList.remove("is-error", "is-success");
+      if (type) statusEl.classList.add(type);
+    }
+
+    function lookup() {
+      var code = zipInput.value.replace(/[^0-9]/g, "");
+      if (code.length !== 7) {
+        setStatus("郵便番号は7桁で入力してください（ハイフンなし）", "is-error");
+        return;
+      }
+      setStatus("住所を検索中...");
+      fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode=" + code)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.status !== 200 || !data.results || !data.results.length) {
+            setStatus("該当する住所が見つかりませんでした。直接入力してください", "is-error");
+            return;
+          }
+          var r = data.results[0];
+          prefInput.value = r.address1;
+          cityInput.value = r.address2 + r.address3;
+          setStatus("住所を入力しました", "is-success");
+        })
+        .catch(function () {
+          setStatus("検索に失敗しました。お手数ですが直接入力してください", "is-error");
+        });
+    }
+
+    searchBtn.addEventListener("click", lookup);
+    zipInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        lookup();
+      }
+    });
+  }
+
   /* ---------- ヘッダー：スクロールで影を付与 ---------- */
   function initHeaderShadow() {
     var header = document.querySelector(".site-header");
@@ -92,6 +141,7 @@
     initTabGroup(".risk-tab", ".risk-panel");
     initFaqAccordion();
     initContactForm();
+    initZipcodeLookup();
     initHeaderShadow();
   });
 })();

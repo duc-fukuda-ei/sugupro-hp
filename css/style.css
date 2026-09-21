@@ -857,6 +857,31 @@ table.pricing-table {
   margin-left: 6px;
   vertical-align: middle;
 }
+.form-row .form-optional {
+  display: inline-block;
+  font-size: 14.5px;
+  color: var(--color-text-light);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.form-hint {
+  margin: 6px 0 0;
+  font-size: 14.5px;
+  color: var(--color-text-light);
+  min-height: 1.4em;
+}
+.form-hint.is-error { color: #e0574a; }
+.form-hint.is-success { color: var(--color-success); }
+.zipcode-group {
+  display: flex;
+  gap: 10px;
+}
+.zipcode-group input { flex: 1; }
+.zipcode-group .btn {
+  flex-shrink: 0;
+  padding: 0 18px;
+  font-size: 16px;
+}
 .form-row input[type="text"],
 .form-row input[type="tel"],
 .form-row input[type="email"],

@@ -909,6 +909,25 @@
         </div>
 
         <div class="form-row">
+          <label for="zipcode">郵便番号<span class="form-optional">（分かれば）</span></label>
+          <div class="zipcode-group">
+            <input type="text" id="zipcode" name="zipcode" inputmode="numeric" autocomplete="postal-code" placeholder="例：1000001（ハイフンなし可）" maxlength="8">
+            <button type="button" id="zipcode-search" class="btn btn-outline">住所を検索</button>
+          </div>
+          <p class="form-hint" id="zipcode-status"></p>
+        </div>
+
+        <div class="form-row">
+          <label for="prefecture">都道府県<span class="required">必須</span></label>
+          <input type="text" id="prefecture" name="prefecture" required autocomplete="address-level1" placeholder="例：東京都">
+        </div>
+
+        <div class="form-row">
+          <label for="city">市区町村<span class="required">必須</span></label>
+          <input type="text" id="city" name="city" required autocomplete="address-level2" placeholder="例：新宿区">
+        </div>
+
+        <div class="form-row">
           <label for="customer-type">お客様の区分<span class="required">必須</span></label>
           <select id="customer-type" name="customer-type" required>
             <option value="">選択してください</option>
