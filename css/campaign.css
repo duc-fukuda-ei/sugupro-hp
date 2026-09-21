@@ -230,3 +230,68 @@ img { max-width: 100%; }
 @media (min-width: 1024px) { .cp-sticky { display: none; } body { padding-bottom: 0; } }
 
 .text-center { text-align: center; }
+
+/* ---- シンプルな戻りリンク（ヘッダーの代わり） ---- */
+.cp-backlink {
+  padding: 16px 0 0;
+  font-size: 12.5px;
+}
+.cp-backlink .container { text-align: right; }
+.cp-backlink a { color: var(--cp-text-muted); text-decoration: none; }
+.cp-backlink a:hover { color: var(--cp-text); }
+
+/* ---- タイムライン（規制の時系列） ---- */
+.cp-timeline {
+  max-width: 640px;
+  margin: 0 auto;
+  display: grid;
+  gap: 0;
+}
+.cp-timeline-item {
+  position: relative;
+  padding: 4px 0 28px 32px;
+  border-left: 2px solid var(--cp-border);
+}
+.cp-timeline-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+.cp-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -7px; top: 4px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--cp-accent);
+  border: 2px solid var(--cp-bg);
+}
+.cp-timeline-date { font-weight: 900; font-size: 15px; color: var(--cp-warn); font-family: "Zen Kaku Gothic New", sans-serif; }
+.cp-timeline-text { margin-top: 6px; font-size: 14px; color: var(--cp-text-muted); }
+
+/* ---- 今のうちにできること（アクションリスト） ---- */
+.cp-action-list {
+  display: grid;
+  gap: 14px;
+  max-width: 700px;
+  margin: 0 auto;
+  counter-reset: cpaction;
+}
+.cp-action-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--radius-m);
+  padding: 18px 20px;
+}
+.cp-action-item .no {
+  counter-increment: cpaction;
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--cp-surface-alt);
+  border: 1px solid var(--cp-border);
+  color: var(--cp-warn);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 13px;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+.cp-action-item .no::before { content: counter(cpaction); }
+.cp-action-item .tx { font-size: 14.5px; padding-top: 4px; }
+.cp-action-item .tx strong { display: block; font-size: 15px; margin-bottom: 4px; }
