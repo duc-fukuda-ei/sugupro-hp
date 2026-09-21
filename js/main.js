@@ -136,6 +136,38 @@
     );
   }
 
+  /* ---------- コラム一覧：タグ絞り込み ---------- */
+  function initArticleFilter() {
+    var filterBar = document.getElementById("article-tag-filter");
+    var grid = document.getElementById("article-grid");
+    var emptyMsg = document.getElementById("article-empty");
+    if (!filterBar || !grid) return;
+
+    var buttons = filterBar.querySelectorAll("button");
+    var cards = grid.querySelectorAll(".article-card");
+
+    function applyFilter(tag) {
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var tags = (card.getAttribute("data-tags") || "").split(/\s+/);
+        var show = tag === "all" || tags.indexOf(tag) !== -1;
+        card.hidden = !show;
+        if (show) visibleCount++;
+      });
+      if (emptyMsg) emptyMsg.hidden = cards.length === 0 ? false : visibleCount > 0;
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        buttons.forEach(function (b) { b.classList.remove("is-active"); });
+        btn.classList.add("is-active");
+        applyFilter(btn.getAttribute("data-tag"));
+      });
+    });
+
+    applyFilter("all");
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initTabGroup(".pain-tab", ".pain-panel");
     initTabGroup(".risk-tab", ".risk-panel");
@@ -143,5 +175,6 @@
     initContactForm();
     initZipcodeLookup();
     initHeaderShadow();
+    initArticleFilter();
   });
 })();

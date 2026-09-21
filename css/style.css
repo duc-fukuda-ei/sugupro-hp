@@ -200,8 +200,8 @@ section { padding: 64px 0; }
 @media (min-width: 1024px) {
   .header-nav {
     display: flex;
-    gap: clamp(12px, 1.6vw, 22px);
-    font-size: 16px;
+    gap: clamp(8px, 1.2vw, 18px);
+    font-size: 15px;
     font-weight: 600;
     flex-wrap: nowrap;
   }
@@ -212,8 +212,11 @@ section { padding: 64px 0; }
   .header-tel { display: flex; }
   .header-tel .tel-number { white-space: nowrap; }
 }
-@media (min-width: 1024px) and (max-width: 1180px) {
-  .header-nav { font-size: 14.5px; }
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .header-nav { font-size: 13px; gap: 8px; }
+}
+@media (min-width: 1024px) and (max-width: 1140px) {
+  .header-tel { display: none; }
 }
 
 /* ---------- スマホ固定CTAバー ---------- */

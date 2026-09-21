@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コラム｜すぐプロ</title>
+<meta name="description" content="LED化・配線整理・電気工事の補助金情報など、すぐプロが発信する電気工事のお役立ちコラムです。東京都・埼玉県・千葉県・神奈川県のお客様向けに、実務に役立つ情報を紹介しています。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sugupro.org/articles/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="すぐプロ">
+<meta property="og:title" content="コラム｜すぐプロ">
+<meta property="og:description" content="LED化・配線整理・電気工事の補助金情報など、電気工事のお役立ちコラムです。">
+<meta property="og:url" content="https://sugupro.org/articles/">
+<meta property="og:image" content="https://sugupro.org/images/stock/hero-electrician.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/article.css">
+<link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo" aria-label="すぐプロ トップへ">
+      <img class="logo-image" src="../images/real/logo-sugupro.png" alt="すぐプロ">
+    </a>
+    <nav class="header-nav" aria-label="サイト内メニュー">
+      <a href="../index.html#services">サービス</a>
+      <a href="../index.html#before-after">施工事例</a>
+      <a href="./" aria-current="page">コラム</a>
+      <a href="../index.html#pricing">料金</a>
+      <a href="../index.html#flow">ご依頼の流れ</a>
+      <a href="../index.html#faq">よくある質問</a>
+      <a href="../index.html#area">対応エリア</a>
+    </nav>
+    <div class="header-actions">
+      <a href="tel:08066762234" class="header-tel">
+        <span class="tel-number">080-6676-2234</span>
+        <span class="tel-caption">受付時間：【営業時間を入力】</span>
+      </a>
+      <a href="../index.html#contact" class="btn btn-primary">無料で相談する</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <p class="article-breadcrumb"><a href="../index.html">トップ</a><span class="sep">/</span>コラム</p>
+
+    <div class="articles-hero">
+      <h1>電気工事のお役立ちコラム</h1>
+      <p>LED化・配線整理・補助金の活用など、個人宅・店舗・工場それぞれに役立つ情報を発信しています。</p>
+    </div>
+
+    <!--
+      タグ絞り込みボタン：
+      記事を追加したら、そのタグに対応するボタンをここに（無ければ）追加してください。
+      ボタンの data-tag と、下の記事カードの data-tags は一致させてください（js/main.js が自動でフィルタします）。
+    -->
+    <div class="article-tag-filter" id="article-tag-filter">
+      <button type="button" class="is-active" data-tag="all">すべて</button>
+      <button type="button" data-tag="led">LED化</button>
+      <button type="button" data-tag="wiring">配線整理</button>
+      <button type="button" data-tag="subsidy">補助金</button>
+      <button type="button" data-tag="factory">工場</button>
+      <button type="button" data-tag="store">店舗</button>
+      <button type="button" data-tag="home">個人宅</button>
+    </div>
+
+    <!--
+      ============================================================
+      記事カードの追加方法：
+      1) 下の <div class="article-grid"> の中に、.article-card を1つ複製
+      2) href を新しい記事のURL（例：../articles/led-tokyo-hojokin/）に変更
+      3) data-tags に該当するタグをスペース区切りで入れる（例：data-tags="led subsidy"）
+      4) サムネイル画像・タイトル・抜粋・日付を差し替え
+      5) 記事本体は templates/article-template.html を複製して作成
+      ============================================================
+    -->
+    <div class="article-grid" id="article-grid">
+      <!-- 記事が公開されたら、ここに .article-card を追加していきます -->
+    </div>
+
+    <p class="article-empty" id="article-empty">現在、コラムを準備中です。近日公開いたします。</p>
+  </div>
+</main>
+
+<footer class="site-footer" id="company">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">すぐプロ</p>
+        <p class="footer-brand-desc">
+          電気の"ちょっと困った"を、もっと気軽に。<br>
+          個人宅・店舗・工場の小さな電気工事に対応しています。
+        </p>
+      </div>
+      <div>
+        <p class="footer-heading">会社情報</p>
+        <ul class="footer-info-list">
+          <li><span class="label">会社名</span><span>DNM合同会社</span></li>
+          <li><span class="label">代表者</span><span>福沢 翼</span></li>
+          <li><span class="label">所在地</span><span>東京都文京区千駄木3-46-12-102</span></li>
+          <li><span class="label">電話番号</span><span>080-6676-2234</span></li>
+          <li><span class="label">保有資格</span><span>第一種電気工事士・第二種電気工事士・消防設備士（パートナーを含む）</span></li>
+          <li><span class="label">対応エリア</span><span>東京都・埼玉県・千葉県・神奈川県</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">メニュー</p>
+        <ul class="footer-links">
+          <li><a href="../index.html">トップページ</a></li>
+          <li><a href="../index.html#services">サービス内容</a></li>
+          <li><a href="./">コラム</a></li>
+          <li><a href="../index.html#pricing">料金</a></li>
+          <li><a href="../index.html#faq">よくある質問</a></li>
+          <li><a href="../privacy.html">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> すぐプロ（運営：DNM合同会社）</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-sticky-cta">
+  <a href="tel:08066762234" class="mobile-cta-tel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.4 2.1L8 10.1a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+    電話
+  </a>
+  <a href="https://line.me/ti/p/1LCdPBnhKS" class="mobile-cta-line" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    LINE
+  </a>
+  <a href="../index.html#contact" class="mobile-cta-form">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    問い合わせ
+  </a>
+</div>
+
+<script src="../js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

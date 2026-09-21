@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--
+  ============================================================
+  記事テンプレートの使い方
+  1) このファイルを丸ごとコピーし、articles/【記事のスラッグ】/index.html として保存
+     例：articles/led-tokyo-hojokin/index.html
+     スラッグは半角英数字とハイフンのみ、内容が分かる単語にしてください
+  2) 【 】で囲んだプレースホルダーをすべて実際の内容に置き換える
+  3) 本文は <div class="article-body"> 内に、見出しはh2/h3、本文はpタグで記述
+  4) 書き終えたら articles/index.html に .article-card を1つ追加してリンク
+  5) sitemap.xml にもこのページのURLを追加
+  ============================================================
+-->
+
+<title>【記事タイトル（32文字目安）】｜すぐプロコラム</title>
+<meta name="description" content="【記事の要約。120文字程度で、検索結果に表示される説明文になります】">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sugupro.org/articles/【スラッグ】/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="すぐプロ">
+<meta property="og:title" content="【記事タイトル】｜すぐプロコラム">
+<meta property="og:description" content="【記事の要約】">
+<meta property="og:url" content="https://sugupro.org/articles/【スラッグ】/">
+<meta property="og:image" content="https://sugupro.org/images/articles/【スラッグ】/eyecatch.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+
+<!-- 構造化データ：日付・著者情報は確定後に正確な値へ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "【記事タイトル】",
+  "description": "【記事の要約】",
+  "image": "https://sugupro.org/images/articles/【スラッグ】/eyecatch.jpg",
+  "datePublished": "【YYYY-MM-DD】",
+  "dateModified": "【YYYY-MM-DD】",
+  "author": { "@type": "Organization", "name": "すぐプロ" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "すぐプロ",
+    "logo": { "@type": "ImageObject", "url": "https://sugupro.org/images/real/logo-sugupro.png" }
+  },
+  "mainEntityOfPage": "https://sugupro.org/articles/【スラッグ】/"
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="logo" aria-label="すぐプロ トップへ">
+      <img class="logo-image" src="../../images/real/logo-sugupro.png" alt="すぐプロ">
+    </a>
+    <nav class="header-nav" aria-label="サイト内メニュー">
+      <a href="../../index.html#services">サービス</a>
+      <a href="../../index.html#before-after">施工事例</a>
+      <a href="../../articles/">コラム</a>
+      <a href="../../index.html#pricing">料金</a>
+      <a href="../../index.html#flow">ご依頼の流れ</a>
+      <a href="../../index.html#faq">よくある質問</a>
+      <a href="../../index.html#area">対応エリア</a>
+    </nav>
+    <div class="header-actions">
+      <a href="tel:08066762234" class="header-tel">
+        <span class="tel-number">080-6676-2234</span>
+        <span class="tel-caption">受付時間：【営業時間を入力】</span>
+      </a>
+      <a href="../../index.html#contact" class="btn btn-primary">無料で相談する</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <p class="article-breadcrumb">
+      <a href="../../index.html">トップ</a><span class="sep">/</span>
+      <a href="../../articles/">コラム</a><span class="sep">/</span>
+      【記事タイトル（短縮可）】
+    </p>
+
+    <div class="article-page-header">
+      <div class="article-page-tags">
+        <!-- articles/index.html のタグと合わせてください（led / wiring / subsidy / factory / store / home） -->
+        <span class="article-card-tag">【タグ名】</span>
+      </div>
+      <h1 class="article-page-title">【記事タイトル】</h1>
+      <div class="article-page-meta">
+        <span>公開日：【YYYY年MM月DD日】</span>
+        <span>更新日：【YYYY年MM月DD日】</span>
+      </div>
+    </div>
+
+    <article class="article-body">
+
+      <p>【リード文。この記事で何が分かるか、誰向けかを2〜3文で。検索から来た人が「自分に関係がある」と分かるように】</p>
+
+      <h2>【見出し1】</h2>
+      <p>【本文】</p>
+
+      <h2>【見出し2】</h2>
+      <p>【本文】</p>
+      <ul>
+        <li>【ポイント1】</li>
+        <li>【ポイント2】</li>
+      </ul>
+
+      <h2>まとめ</h2>
+      <p>【記事全体の要点を簡潔に】</p>
+
+    </article>
+
+    <div class="article-cta">
+      <p>電気工事のご相談は、すぐプロにお気軽にどうぞ。</p>
+      <div class="cta-group">
+        <a href="../../index.html#contact" class="btn btn-primary">無料相談する</a>
+        <a href="tel:08066762234" class="btn btn-outline">電話で相談する</a>
+      </div>
+    </div>
+
+    <p class="article-note">
+      本記事の内容は公開時点の情報です。制度・料金・仕様は変更される場合がありますので、最新情報は各公式サイトまたはすぐプロまでお問い合わせください。
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer" id="company">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">すぐプロ</p>
+        <p class="footer-brand-desc">
+          電気の"ちょっと困った"を、もっと気軽に。<br>
+          個人宅・店舗・工場の小さな電気工事に対応しています。
+        </p>
+      </div>
+      <div>
+        <p class="footer-heading">会社情報</p>
+        <ul class="footer-info-list">
+          <li><span class="label">会社名</span><span>DNM合同会社</span></li>
+          <li><span class="label">代表者</span><span>福沢 翼</span></li>
+          <li><span class="label">所在地</span><span>東京都文京区千駄木3-46-12-102</span></li>
+          <li><span class="label">電話番号</span><span>080-6676-2234</span></li>
+          <li><span class="label">保有資格</span><span>第一種電気工事士・第二種電気工事士・消防設備士（パートナーを含む）</span></li>
+          <li><span class="label">対応エリア</span><span>東京都・埼玉県・千葉県・神奈川県</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">メニュー</p>
+        <ul class="footer-links">
+          <li><a href="../../index.html">トップページ</a></li>
+          <li><a href="../../index.html#services">サービス内容</a></li>
+          <li><a href="../../articles/">コラム</a></li>
+          <li><a href="../../index.html#pricing">料金</a></li>
+          <li><a href="../../index.html#faq">よくある質問</a></li>
+          <li><a href="../../privacy.html">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> すぐプロ（運営：DNM合同会社）</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-sticky-cta">
+  <a href="tel:08066762234" class="mobile-cta-tel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.4 2.1L8 10.1a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+    電話
+  </a>
+  <a href="https://line.me/ti/p/1LCdPBnhKS" class="mobile-cta-line" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    LINE
+  </a>
+  <a href="../../index.html#contact" class="mobile-cta-form">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    問い合わせ
+  </a>
+</div>
+
+<script src="../../js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
