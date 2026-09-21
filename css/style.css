@@ -135,13 +135,15 @@ section { padding: 64px 0; }
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--color-border);
-  height: var(--header-height);
 }
 .site-header .container {
-  height: 100%;
+  min-height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 16px;
+  padding-block: 10px;
 }
 .logo {
   font-weight: 700;
@@ -168,6 +170,12 @@ section { padding: 64px 0; }
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
+}
+.header-actions .btn {
+  font-size: 15px;
+  padding: 11px 20px;
+  white-space: nowrap;
 }
 .header-tel {
   display: none;
@@ -176,13 +184,14 @@ section { padding: 64px 0; }
   text-align: right;
 }
 .header-tel .tel-number {
-  font-size: 24.5px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--color-primary-dark);
 }
 .header-tel .tel-caption {
-  font-size: 14.5px;
+  font-size: 12.5px;
   color: var(--color-text-light);
+  white-space: nowrap;
 }
 .menu-toggle {
   display: none;
@@ -191,12 +200,20 @@ section { padding: 64px 0; }
 @media (min-width: 1024px) {
   .header-nav {
     display: flex;
-    gap: 26px;
-    font-size: 18px;
+    gap: clamp(12px, 1.6vw, 22px);
+    font-size: 16px;
     font-weight: 600;
+    flex-wrap: nowrap;
+  }
+  .header-nav a {
+    white-space: nowrap;
   }
   .header-nav a:hover { color: var(--color-primary); }
   .header-tel { display: flex; }
+  .header-tel .tel-number { white-space: nowrap; }
+}
+@media (min-width: 1024px) and (max-width: 1180px) {
+  .header-nav { font-size: 14.5px; }
 }
 
 /* ---------- スマホ固定CTAバー ---------- */
