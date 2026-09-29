@@ -13,7 +13,7 @@
 | No | タイトル | 狙うキーワード | ステータス | 公開URL |
 |---|---|---|---|---|
 | 01 | 蛍光灯をLEDに交換するにはいくらかかる？工事費・器具代の目安を解説 | 蛍光灯 LED 交換 費用 | PUBLISHED | /articles/fluorescent-led-cost/ |
-| 02 | 蛍光灯をLEDに交換する方法｜器具ごと交換とLEDランプ交換の違い | 蛍光灯 LED 交換 方法 | DRAFT_REVIEW | プレビュー: draft-article-02-led-methods.sugupro-hp.pages.dev |
+| 02 | 蛍光灯をLEDに交換する方法｜器具ごと交換とLEDランプ交換の違い | 蛍光灯 LED 交換 方法 | PUBLISHED | /articles/fluorescent-led-methods/ |
 | 03 | LED照明に交換すると電気代はいくら安くなる？家庭・店舗で考えるポイント | LED 電気代 安くなる | WAITING | - |
 | 04 | 古い蛍光灯をそのまま使い続けても大丈夫？LED化を考えるタイミング | 蛍光灯 古い LED | WAITING | - |
 | 05 | LED照明がつかない・ちらつく原因は？交換前に確認したいポイント | LED つかない ちらつく | WAITING | - |
