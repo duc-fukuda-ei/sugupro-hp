@@ -93,7 +93,20 @@
     var busy = false;
 
     // 送信用の隠し欄を生成する。画面には出さず、FormSubmitへの送信にのみ使う。
-    slotWrap.style.display = "none";
+    // display:none にするとファイルが送信されないブラウザがあるため、
+    // 描画はされたまま視覚的にだけ隠す（スクリーンリーダー等の定番手法）。
+    slotWrap.setAttribute("aria-hidden", "true");
+    slotWrap.style.position = "absolute";
+    slotWrap.style.width = "1px";
+    slotWrap.style.height = "1px";
+    slotWrap.style.margin = "-1px";
+    slotWrap.style.padding = "0";
+    slotWrap.style.border = "0";
+    slotWrap.style.overflow = "hidden";
+    slotWrap.style.clip = "rect(0 0 0 0)";
+    slotWrap.style.clipPath = "inset(50%)";
+    slotWrap.style.whiteSpace = "nowrap";
+    slotWrap.style.pointerEvents = "none";
     var slots = [];
     (function createSlots() {
       for (var i = 0; i < MAX_FILES; i++) {
