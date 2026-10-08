@@ -82,14 +82,30 @@
     var list = document.getElementById("photo-list");
     var errorEl = document.getElementById("photo-error");
     var form = document.getElementById("contact-form");
-    if (!input || !list || !errorEl || !form) return;
+    var slotWrap = document.getElementById("photo-slots");
+    if (!input || !list || !errorEl || !form || !slotWrap) return;
 
-    var MAX_FILES = 5;
+    var slots = slotWrap.querySelectorAll('input[type="file"]');
+    var MAX_FILES = slots.length;
     var MAX_DIMENSION = 1600;
     var JPEG_QUALITY = 0.8;
     var TOTAL_LIMIT = 9 * 1024 * 1024; // 10MBの手前で余裕を持たせる
     var canReplaceFiles = typeof DataTransfer !== "undefined";
     var busy = false;
+
+    // FormSubmitは1つの入力欄につき1ファイルしか受け取らないため、1枚ずつ別の欄に入れる
+    function fillSlots(files) {
+      Array.prototype.forEach.call(slots, function (slot, i) {
+        var dt = new DataTransfer();
+        if (files[i]) dt.items.add(files[i]);
+        slot.files = dt.files;
+      });
+    }
+
+    function clearSlots() {
+      if (!canReplaceFiles) return;
+      fillSlots([]);
+    }
 
     function formatSize(bytes) {
       if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + "KB";
@@ -153,7 +169,14 @@
     input.addEventListener("change", function () {
       var selected = Array.prototype.slice.call(input.files);
       showError("");
+      clearSlots();
       if (!selected.length) { list.innerHTML = ""; return; }
+
+      if (!canReplaceFiles) {
+        showError("ご利用のブラウザでは写真を添付できません。お手数ですが、LINEから写真をお送りください。");
+        list.innerHTML = "";
+        return;
+      }
 
       if (selected.length > MAX_FILES) {
         showError("写真は" + MAX_FILES + "枚までお送りいただけます。枚数を減らしてもう一度お選びください。");
@@ -170,30 +193,19 @@
 
         if (total > TOTAL_LIMIT) {
           showError("写真の合計サイズが大きすぎます（" + formatSize(total) + "）。枚数を減らしてお試しいただくか、LINEからお送りください。");
+          clearSlots();
           render(processed);
           return;
         }
 
-        if (canReplaceFiles) {
-          var dt = new DataTransfer();
-          processed.forEach(function (f) { dt.items.add(f); });
-          input.files = dt.files;
-          render(input.files);
-          showError("");
-        } else {
-          // 置き換え非対応のブラウザは元ファイルのまま送信するため、容量だけ確認
-          var originalTotal = selected.reduce(function (sum, f) { return sum + f.size; }, 0);
-          render(selected);
-          if (originalTotal > TOTAL_LIMIT) {
-            showError("写真の合計サイズが大きすぎます（" + formatSize(originalTotal) + "）。枚数を減らすか、LINEからお送りください。");
-          } else {
-            showError("");
-          }
-        }
+        fillSlots(processed);
+        render(processed);
+        showError("");
       })
       // 想定外の失敗でbusyが立ったままになると送信が永久にブロックされるため必ず解除する
       .catch(function () {
-        showError("");
+        clearSlots();
+        showError("写真の処理に失敗しました。お手数ですが、LINEから写真をお送りください。");
         render(selected);
       })
       .then(function () { busy = false; });

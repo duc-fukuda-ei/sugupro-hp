@@ -949,6 +949,16 @@ table.pricing-table {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(23,87,143,0.14);
 }
+/* 振り分け用の隠し入力欄。display:none だと送信されない環境があるため視覚的にのみ隠す */
+.photo-slots {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .photo-list {
   margin: 10px 0 0;
   padding: 0;

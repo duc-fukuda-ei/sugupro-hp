@@ -965,10 +965,22 @@
         -->
         <div class="form-row">
           <label for="photos">写真の添付<span class="form-optional">（任意・5枚まで）</span></label>
-          <input type="file" id="photos" name="attachment" accept="image/*" multiple>
+          <!--
+            この欄は選択用で、name を持たないため単体では送信されない。
+            FormSubmit は1つの入力欄につき1ファイルしか受け取らないため、
+            initPhotoUpload() が圧縮後の画像を下の attachment1〜5 に1枚ずつ振り分ける。
+          -->
+          <input type="file" id="photos" accept="image/*" multiple>
           <p class="form-hint">現在の照明・コンセント・分電盤などの写真があると、より具体的にご案内できます。送信時に自動で軽量化されるため、スマホの写真をそのまま選んでいただけます。</p>
           <ul class="photo-list" id="photo-list"></ul>
           <p class="form-error" id="photo-error" hidden></p>
+          <div class="photo-slots" id="photo-slots" aria-hidden="true">
+            <input type="file" name="attachment" accept="image/*" tabindex="-1">
+            <input type="file" name="attachment2" accept="image/*" tabindex="-1">
+            <input type="file" name="attachment3" accept="image/*" tabindex="-1">
+            <input type="file" name="attachment4" accept="image/*" tabindex="-1">
+            <input type="file" name="attachment5" accept="image/*" tabindex="-1">
+          </div>
         </div>
 
         <div class="form-submit">
