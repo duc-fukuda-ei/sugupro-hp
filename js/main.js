@@ -200,9 +200,21 @@
       }
 
       busy = true;
-      render(selected, "軽量化しています…");
+      render(selected, "軽量化しています…（0/" + selected.length + "枚）");
 
-      Promise.all(selected.map(compress)).then(function (processed) {
+      // 同時に処理すると高画素の写真では端末のメモリを使い切るため、1枚ずつ順番に処理する
+      var processed = [];
+      var chain = Promise.resolve();
+      selected.forEach(function (file) {
+        chain = chain.then(function () {
+          return compress(file).then(function (out) {
+            processed.push(out);
+            render(selected, "軽量化しています…（" + processed.length + "/" + selected.length + "枚）");
+          });
+        });
+      });
+
+      chain.then(function () {
         var total = processed.reduce(function (sum, f) { return sum + f.size; }, 0);
 
         if (total > TOTAL_LIMIT) {
