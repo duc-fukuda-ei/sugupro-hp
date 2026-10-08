@@ -85,17 +85,31 @@
     var slotWrap = document.getElementById("photo-slots");
     if (!input || !list || !errorEl || !form || !slotWrap) return;
 
-    var slots = slotWrap.querySelectorAll('input[type="file"]');
-    var MAX_FILES = slots.length;
+    var MAX_FILES = 5;
     var MAX_DIMENSION = 1600;
     var JPEG_QUALITY = 0.8;
     var TOTAL_LIMIT = 9 * 1024 * 1024; // 10MBの手前で余裕を持たせる
     var canReplaceFiles = typeof DataTransfer !== "undefined";
     var busy = false;
 
+    // 送信用の隠し欄を生成する。画面には出さず、FormSubmitへの送信にのみ使う。
+    slotWrap.style.display = "none";
+    var slots = [];
+    (function createSlots() {
+      for (var i = 0; i < MAX_FILES; i++) {
+        var slot = document.createElement("input");
+        slot.type = "file";
+        slot.name = i === 0 ? "attachment" : "attachment" + (i + 1);
+        slot.accept = "image/*";
+        slot.tabIndex = -1;
+        slotWrap.appendChild(slot);
+        slots.push(slot);
+      }
+    })();
+
     // FormSubmitは1つの入力欄につき1ファイルしか受け取らないため、1枚ずつ別の欄に入れる
     function fillSlots(files) {
-      Array.prototype.forEach.call(slots, function (slot, i) {
+      slots.forEach(function (slot, i) {
         var dt = new DataTransfer();
         if (files[i]) dt.items.add(files[i]);
         slot.files = dt.files;

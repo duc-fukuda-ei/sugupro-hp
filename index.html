@@ -974,13 +974,8 @@
           <p class="form-hint">現在の照明・コンセント・分電盤などの写真があると、より具体的にご案内できます。送信時に自動で軽量化されるため、スマホの写真をそのまま選んでいただけます。</p>
           <ul class="photo-list" id="photo-list"></ul>
           <p class="form-error" id="photo-error" hidden></p>
-          <div class="photo-slots" id="photo-slots" aria-hidden="true">
-            <input type="file" name="attachment" accept="image/*" tabindex="-1">
-            <input type="file" name="attachment2" accept="image/*" tabindex="-1">
-            <input type="file" name="attachment3" accept="image/*" tabindex="-1">
-            <input type="file" name="attachment4" accept="image/*" tabindex="-1">
-            <input type="file" name="attachment5" accept="image/*" tabindex="-1">
-          </div>
+          <!-- 送信用の隠し欄は initPhotoUpload() がここに生成する（CSSに依存せず確実に隠すため） -->
+          <div id="photo-slots"></div>
         </div>
 
         <div class="form-submit">
