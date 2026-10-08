@@ -74,6 +74,144 @@
     });
   }
 
+  /* ---------- 写真添付：送信前にブラウザ側で自動縮小 ----------
+     FormSubmitの添付上限が合計10MBのため、スマホ写真をそのまま送ると
+     2〜3枚で上限を超えて送信が失敗する。選択時に縮小して差し替える。 */
+  function initPhotoUpload() {
+    var input = document.getElementById("photos");
+    var list = document.getElementById("photo-list");
+    var errorEl = document.getElementById("photo-error");
+    var form = document.getElementById("contact-form");
+    if (!input || !list || !errorEl || !form) return;
+
+    var MAX_FILES = 5;
+    var MAX_DIMENSION = 1600;
+    var JPEG_QUALITY = 0.8;
+    var TOTAL_LIMIT = 9 * 1024 * 1024; // 10MBの手前で余裕を持たせる
+    var canReplaceFiles = typeof DataTransfer !== "undefined";
+    var busy = false;
+
+    function formatSize(bytes) {
+      if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + "KB";
+      return (bytes / 1024 / 1024).toFixed(1) + "MB";
+    }
+
+    function showError(message) {
+      errorEl.textContent = message;
+      errorEl.hidden = !message;
+    }
+
+    function render(files, note) {
+      list.innerHTML = "";
+      var total = 0;
+      Array.prototype.forEach.call(files, function (file) {
+        total += file.size;
+        var li = document.createElement("li");
+        li.textContent = file.name + "（" + formatSize(file.size) + "）";
+        list.appendChild(li);
+      });
+      if (files.length) {
+        var summary = document.createElement("li");
+        summary.className = "photo-list-total";
+        summary.textContent = note || files.length + "枚・合計" + formatSize(total);
+        list.appendChild(summary);
+      }
+      return total;
+    }
+
+    // 画像を縮小してJPEGに変換する。失敗した場合は元のファイルを返す。
+    function compress(file) {
+      if (!file.type || file.type.indexOf("image/") !== 0) {
+        return Promise.resolve(file);
+      }
+      if (typeof createImageBitmap !== "function" || !window.Blob) {
+        return Promise.resolve(file);
+      }
+      // imageOrientation未対応のブラウザでも落ちないよう、オプション付きで失敗したら素で再試行
+      return createImageBitmap(file, { imageOrientation: "from-image" })
+        .catch(function () { return createImageBitmap(file); })
+        .then(function (bitmap) {
+          var scale = Math.min(1, MAX_DIMENSION / Math.max(bitmap.width, bitmap.height));
+          var w = Math.round(bitmap.width * scale);
+          var h = Math.round(bitmap.height * scale);
+          var canvas = document.createElement("canvas");
+          canvas.width = w;
+          canvas.height = h;
+          canvas.getContext("2d").drawImage(bitmap, 0, 0, w, h);
+          if (bitmap.close) bitmap.close();
+          return new Promise(function (resolve) {
+            canvas.toBlob(function (blob) {
+              if (!blob || blob.size >= file.size) return resolve(file);
+              var name = file.name.replace(/\.[^.]+$/, "") + ".jpg";
+              resolve(new File([blob], name, { type: "image/jpeg" }));
+            }, "image/jpeg", JPEG_QUALITY);
+          });
+        })
+        .catch(function () { return file; });
+    }
+
+    input.addEventListener("change", function () {
+      var selected = Array.prototype.slice.call(input.files);
+      showError("");
+      if (!selected.length) { list.innerHTML = ""; return; }
+
+      if (selected.length > MAX_FILES) {
+        showError("写真は" + MAX_FILES + "枚までお送りいただけます。枚数を減らしてもう一度お選びください。");
+        input.value = "";
+        list.innerHTML = "";
+        return;
+      }
+
+      busy = true;
+      render(selected, "軽量化しています…");
+
+      Promise.all(selected.map(compress)).then(function (processed) {
+        var total = processed.reduce(function (sum, f) { return sum + f.size; }, 0);
+
+        if (total > TOTAL_LIMIT) {
+          showError("写真の合計サイズが大きすぎます（" + formatSize(total) + "）。枚数を減らしてお試しいただくか、LINEからお送りください。");
+          render(processed);
+          return;
+        }
+
+        if (canReplaceFiles) {
+          var dt = new DataTransfer();
+          processed.forEach(function (f) { dt.items.add(f); });
+          input.files = dt.files;
+          render(input.files);
+          showError("");
+        } else {
+          // 置き換え非対応のブラウザは元ファイルのまま送信するため、容量だけ確認
+          var originalTotal = selected.reduce(function (sum, f) { return sum + f.size; }, 0);
+          render(selected);
+          if (originalTotal > TOTAL_LIMIT) {
+            showError("写真の合計サイズが大きすぎます（" + formatSize(originalTotal) + "）。枚数を減らすか、LINEからお送りください。");
+          } else {
+            showError("");
+          }
+        }
+      })
+      // 想定外の失敗でbusyが立ったままになると送信が永久にブロックされるため必ず解除する
+      .catch(function () {
+        showError("");
+        render(selected);
+      })
+      .then(function () { busy = false; });
+    });
+
+    form.addEventListener("submit", function (e) {
+      if (busy) {
+        e.preventDefault();
+        showError("写真を処理しています。数秒お待ちのうえ、もう一度送信してください。");
+        return;
+      }
+      if (!errorEl.hidden) {
+        e.preventDefault();
+        errorEl.scrollIntoView({ block: "center" });
+      }
+    });
+  }
+
   /* ---------- 郵便番号から住所検索（zipcloud API、無料・登録不要） ---------- */
   function initZipcodeLookup() {
     var zipInput = document.getElementById("zipcode");
@@ -195,6 +333,7 @@
     initTabGroup(".risk-tab", ".risk-panel");
     initFaqAccordion();
     initContactForm();
+    initPhotoUpload();
     initZipcodeLookup();
     initHeaderShadow();
     initArticleFilter();

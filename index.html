@@ -888,12 +888,11 @@
         フォーム送信がメールに届きません（サイト訪問者には正常に送信完了したように見えます）。
         受信先を変更する場合は action 内のメールアドレスを差し替え、再度有効化してください。
       -->
-      <form class="contact-form" id="contact-form" action="https://formsubmit.co/n.huyduc@fukuda-ei.co.jp" method="POST" novalidate>
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/n.huyduc@fukuda-ei.co.jp" method="POST" enctype="multipart/form-data" novalidate>
         <input type="hidden" name="_subject" value="【すぐプロ】ウェブサイトから新規お問い合わせ">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
-        <!-- 実際のドメインが決まったら thanks.html を絶対URL（例：https://example.com/thanks.html）に変更してください -->
-        <input type="hidden" name="_next" value="thanks.html">
+        <input type="hidden" name="_next" value="https://sugupro.org/thanks.html">
         <!-- スパム対策用のハニーポット（人間には見えず、ボットだけが入力してしまう罠フィールド） -->
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
@@ -957,6 +956,19 @@
         <div class="form-row">
           <label for="message">お困りごとの内容</label>
           <textarea id="message" name="message" rows="5" placeholder="例：店内の蛍光灯をLEDに変えたい／コンセントを増やしたい　など、分かる範囲で構いません"></textarea>
+        </div>
+
+        <!--
+          写真添付：送信前に js/main.js の initPhotoUpload() が画像を自動縮小します。
+          FormSubmit の添付上限が合計10MBのため、圧縮せずに送ると
+          スマホ写真2〜3枚で上限を超えて送信が失敗します。
+        -->
+        <div class="form-row">
+          <label for="photos">写真の添付<span class="form-optional">（任意・5枚まで）</span></label>
+          <input type="file" id="photos" name="attachment" accept="image/*" multiple>
+          <p class="form-hint">現在の照明・コンセント・分電盤などの写真があると、より具体的にご案内できます。送信時に自動で軽量化されるため、スマホの写真をそのまま選んでいただけます。</p>
+          <ul class="photo-list" id="photo-list"></ul>
+          <p class="form-error" id="photo-error" hidden></p>
         </div>
 
         <div class="form-submit">

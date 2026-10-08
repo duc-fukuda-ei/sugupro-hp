@@ -933,6 +933,47 @@ table.pricing-table {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(23,87,143,0.14);
 }
+.form-row input[type="file"] {
+  width: 100%;
+  padding: 13px 14px;
+  font-size: 16px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-s);
+  background: #fff;
+  color: var(--color-text);
+  font-family: inherit;
+  cursor: pointer;
+}
+.form-row input[type="file"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(23,87,143,0.14);
+}
+.photo-list {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.photo-list li {
+  font-size: 14px;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  word-break: break-all;
+}
+.photo-list .photo-list-total {
+  margin-top: 4px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.form-error {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #a3291c;
+  background: #fdecea;
+  border-radius: var(--radius-s);
+}
 .form-check-group { display: flex; flex-wrap: wrap; gap: 10px; }
 .form-check-group label {
   display: flex;
